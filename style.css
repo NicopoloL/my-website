@@ -1,0 +1,623 @@
+/* Базовые стили */
+:root {
+    --primary: #0a0a12;
+    --secondary: #ff4655;
+    --accent: #2a2a3a;
+    --light: #161622;
+    --dark: #e0e0e0;
+    --text: #e0e0e0;
+    --text-light: #8a8aa3;
+    --shadow: 0 4px 6px rgba(255, 70, 85, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--primary);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 60px 0;
+}
+
+h1, h2, h3, h4 {
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--secondary);
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--secondary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: #ff6b7a;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--secondary);
+    color: var(--primary);
+    border-radius: 4px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background: #ff6b7a;
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Общие стили для таблиц */
+.table-section {
+    background: var(--primary);
+}
+
+.table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2.5rem; 
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--light);
+}
+
+.table-container th {
+    background: var(--secondary);
+    color: var(--primary);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.table-container td {
+    padding: 15px;
+    border-bottom: 1px solid var(--accent);
+    color: var(--text);
+}
+
+.table-container tr:last-child td {
+    border-bottom: none;
+}
+
+.table-container tr:hover {
+    background: rgba(255, 70, 85, 0.05);
+}
+
+/* Общие стили для секций с фоном */
+.section-light {
+    background: var(--light);
+}
+
+.section-dark {
+    background: var(--primary);
+}
+
+/* Стили для сетки навыков */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 2.5rem; 
+}
+
+.skill-category {
+    background: var(--accent);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid #3a3a4a;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 70, 85, 0.15);
+}
+
+.skill-category h3 {
+    color: var(--dark);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--secondary);
+}
+
+.skill-list {
+    list-style: none;
+    margin-bottom: 1.5rem; 
+}
+
+.skill-list li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+    color: var(--text);
+}
+
+.skill-list li:before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+}
+
+/* Шапка */
+header {
+    background: linear-gradient(135deg, var(--primary), #050508);
+    color: var(--dark);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+    border-bottom: 1px solid var(--accent);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo span {
+    color: var(--secondary);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: var(--dark);
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--secondary);
+}
+
+/* Герой секция */
+.hero {
+    background: linear-gradient(rgba(10, 10, 18, 0.9), rgba(10, 10, 18, 0.95)), url('images/Border.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--dark);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    color: var(--dark);
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: var(--text-light);
+}
+
+/* О себе */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-img {
+    flex: 0 0 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--accent);
+}
+
+.about-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.about-img:hover img {
+    transform: scale(1.05);
+}
+
+.about-text {
+    flex: 1;
+}
+
+/* Контакты */
+.contact {
+    border-top: 1px solid var(--accent);
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.contact-item {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    padding: 20px;
+    background: var(--accent);
+    border-radius: 8px;
+    transition: var(--transition);
+    border: 1px solid #3a3a4a;
+}
+
+.contact-item:hover {
+    background: #3a3a4a;
+    transform: translateY(-5px);
+}
+
+.contact-item i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--secondary);
+}
+
+.contact-item h3 {
+    color: var(--dark);
+}
+
+.contact-item p {
+    color: var(--text-light);
+}
+
+/* Футер */
+footer {
+    background: #050508;
+    color: var(--text-light);
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid var(--accent);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: var(--text-light);
+    margin: 0 15px;
+}
+
+.footer-links a:hover {
+    color: var(--secondary);
+}
+
+/* Стили для видео-оверлея */
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 18, 0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.video-overlay video {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(255, 70, 85, 0.3);
+    border: 2px solid var(--secondary);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: var(--secondary);
+    color: var(--primary);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-btn:hover {
+    background: #ff6b7a;
+    transform: scale(1.1);
+}
+
+/* Манга */
+.manga-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 2.5rem; 
+}
+
+.manga-item {
+    display: flex;
+    gap: 25px;
+    background: var(--accent);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border: 1px solid #3a3a4a;
+    transition: var(--transition);
+}
+
+.manga-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 70, 85, 0.15);
+}
+
+.manga-img {
+    flex: 0 0 120px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.manga-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.manga-info {
+    flex: 1;
+}
+
+.manga-info h3 {
+    color: var(--dark);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--secondary);
+}
+
+.manga-info p {
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+/* Секция об играх */
+.games-content {
+    background: var(--light);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--accent);
+    margin-bottom: 2.5rem; 
+}
+
+.games-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.games-text ul {
+    list-style: none;
+    margin: 20px 0;
+    margin-bottom: 1.5rem; 
+}
+
+.games-text li {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+    color: var(--text);
+}
+
+.games-text li:before {
+    content: '🎮';
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+}
+
+.games-text strong {
+    color: var(--dark);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav li {
+        margin: 5px 10px;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .about-content {
+        flex-direction: column;
+    }
+    
+    .about-img {
+        flex: none;
+        margin-bottom: 30px;
+    }
+    
+    .table-container {
+        font-size: 0.9rem;
+    }
+    
+    .table-container th, 
+    .table-container td {
+        padding: 10px;
+    }
+    
+    .manga-item {
+        flex-direction: column;
+    }
+    
+    .manga-img {
+        flex: none;
+        margin-bottom: 15px;
+    }
+}
+
+/* Реферат */
+.content-ol {
+    list-style-type: none;
+    margin-left: 0;
+    color: var(--text);
+    margin-bottom: 2rem; 
+}
+
+.content-ol li {
+    margin-bottom: 12px;
+}
+
+.content-ol ol {
+    list-style-type: none;
+    margin-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 1.5rem; 
+}
+
+.content-ol ol li {
+    margin-bottom: 6px;
+}
+
+.content-ol a {
+    color: var(--text);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.content-ol a:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+.decimal-list {
+    list-style-type: decimal;
+    margin-left: 30px;
+    color: var(--text);
+    margin-bottom: 2rem; 
+}
+
+.decimal-list li {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.references-list ol {
+    list-style: decimal;
+    margin-left: 20px;
+    margin-bottom: 2rem; 
+}
+
+.references-list li {
+    margin-bottom: 15px;
+    color: var(--text);
+}
+
+nav a.active {
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+/* Стили для скрытия нумерации в содержании, но оставления в тексте */
+.content-ol > li::before,
+.content-ol ol > li::before {
+    display: none;
+}
+
+/* Дополнительные отступы для улучшенного визуального разделения */
+.about-text > *:last-child {
+    margin-bottom: 2rem; 
+}
+
+.skill-category:last-child,
+.table-container:last-child,
+.skills-grid:last-child {
+    margin-bottom: 2.5rem; 
+}
