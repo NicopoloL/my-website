@@ -604,6 +604,9 @@ nav a.active {
     color: var(--secondary);
     font-weight: 600;
 }
+a:hover {
+    text-decoration: underline;
+}
 
 /* Стили для скрытия нумерации в содержании, но оставления в тексте */
 .content-ol > li::before,
