@@ -738,3 +738,188 @@
     </footer>
 </body>
 </html>
+
+<!--<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Реферат с источниками</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 40px;
+    }
+    h2 {
+        margin-top: 40px;
+    }
+    a {
+        color: #0055ff;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+
+<h1>Реферат по анализу физических движков</h1>
+
+<h2>Введение</h2>
+<p>
+Современные компьютерные игры требуют реалистичного моделирования физических эффектов, таких как 
+движение объектов, столкновения, разрушения и динамика жидкостей 
+<a href="#src1">[1]</a>, <a href="#src2">[2]</a>, <a href="#src6">[6]</a>.
+</p>
+<p>
+В данной работе проводится исследование современных инструментальных средств моделирования 
+физики (NVIDIA PhysX, Bullet, Havok, Unity Physics и др.) 
+<a href="#src19">[19]</a>, <a href="#src20">[20]</a>, <a href="#src21">[21]</a>. 
+Рассматриваются способы оптимизации физических симуляций, методы интеграции в игровые движки 
+(Unreal Engine, Unity, Godot) 
+<a href="#src12">[12]</a>, <a href="#src18">[18]</a>, а также перспективные направления — 
+машинное обучение и гибридные подходы 
+<a href="#src3">[3]</a>, <a href="#src7">[7]</a>, <a href="#src8">[8]</a>. 
+</p>
+
+<h2>1. Системный анализ предметной области</h2>
+
+<h3>1.1 Характеристика задачи</h3>
+<p>
+Моделируются физические явления: динамика твёрдых тел, деформация, разрушение, жидкости, частицы 
+<a href="#src1">[1]</a>, <a href="#src14">[14]</a>, <a href="#src16">[16]</a>.  
+Причины сложности моделирования описаны в исследованиях численных методов 
+<a href="#src10">[10]</a>, <a href="#src12">[12]</a>, <a href="#src13">[13]</a>.
+</p>
+
+<h3>1.2 Способы решения существующих проблем</h3>
+<p>
+Методы оптимизации (GPU-ускорение, LOD, параллельность) рассматриваются в современных работах 
+<a href="#src9">[9]</a>, <a href="#src15">[15]</a>, <a href="#src17">[17]</a>.  
+Использование SDK PhysX, Bullet и Box2D подтверждается исследованиями 
+<a href="#src19">[19]</a>, <a href="#src20">[20]</a>, <a href="#src21">[21]</a>.  
+Гибридные и ML-подходы улучшили качество симуляций 
+<a href="#src3">[3]</a>, <a href="#src7">[7]</a>, <a href="#src8">[8]</a>.
+</p>
+
+<h3>1.3 Анализ существующих систем</h3>
+<p>
+NVIDIA PhysX — ведущий движок GPU-физики 
+<a href="#src1">[1]</a>, <a href="#src3">[3]</a>.  
+Bullet Physics — гибкая open-source платформа 
+<a href="#src2">[2]</a>, <a href="#src10">[10]</a>.  
+Havok активно используется в AAA-проектов 
+<a href="#src24">[24]</a>.  
+Системы классификации движков описаны исследователями 
+<a href="#src11">[11]</a>, <a href="#src18">[18]</a>.
+</p>
+
+<h3>1.4 Анализ существующих программных средств</h3>
+<p>
+Рассматриваются игровые движки (Unreal, Unity, Godot) и графические пакеты (Blender, Maya), 
+описанные в современных исследованиях 
+<a href="#src12">[12]</a>, <a href="#src18">[18]</a>, <a href="#src22">[22]</a>.  
+ML-симуляторы и дифференцируемая физика изучены в работах 
+<a href="#src7">[7]</a>, <a href="#src8">[8]</a>, <a href="#src23">[23]</a>.
+</p>
+
+<h2>2. Анализ требований</h2>
+
+<p>
+Общие требования к физическим системам представлены в работах 
+<a href="#src4">[4]</a>, <a href="#src9">[9]</a>.
+</p>
+
+<h3>2.1 Общие функциональные требования</h3>
+<p>
+Требования к интеграции физики в игровые движки описаны в исследованиях 
+<a href="#src12">[12]</a>, <a href="#src17">[17]</a>.  
+API и продвинутые эффекты связаны с ML-методами 
+<a href="#src3">[3]</a>, <a href="#src7">[7]</a>, <a href="#src8">[8]</a>.
+</p>
+
+<h3>2.2 Требования к интерфейсу</h3>
+<p>
+Интерфейсы визуальных симуляторов рассматриваются в работах 
+<a href="#src18">[18]</a>, <a href="#src22">[22]</a>.
+</p>
+
+<h3>2.3 Требования к БД</h3>
+<p>
+Хранение физических данных и параметров моделей описано в исследованиях 
+<a href="#src4">[4]</a>, <a href="#src15">[15]</a>.
+</p>
+
+<h3>2.4 Требования к аппаратуре</h3>
+<p>
+Аппаратные требования основаны на публикациях о GPU-ускорении 
+<a href="#src9">[9]</a>, <a href="#src10">[10]</a>, <a href="#src16">[16]</a>.
+</p>
+
+<h2>3. Перспективные направления развития</h2>
+<p>
+Машинное обучение в физике — 
+<a href="#src3">[3]</a>, <a href="#src7">[7]</a>, <a href="#src8">[8]</a>.  
+Квантовые вычисления — 
+<a href="#src6">[6]</a>, <a href="#src23">[23]</a>.  
+Гибридные подходы — 
+<a href="#src11">[11]</a>, <a href="#src14">[14]</a>, <a href="#src17">[17]</a>.
+</p>
+
+<h2>4. Выводы</h2>
+<p>
+Выводы о применимости PhysX, Bullet и Havok подтверждаются источниками 
+<a href="#src1">[1]</a>, <a href="#src2">[2]</a>, <a href="#src24">[24]</a>, <a href="#src25">[25]</a>.  
+Оптимизации GPU и параллельных вычислений — 
+<a href="#src9">[9]</a>, <a href="#src10">[10]</a>, <a href="#src15">[15]</a>.  
+Перспективы ML и дифференцируемой физики — 
+<a href="#src3">[3]</a>, <a href="#src7">[7]</a>, <a href="#src8">[8]</a>, <a href="#src23">[23]</a>.
+</p>
+
+<hr>
+
+<h2 id="sources">Список литературы</h2>
+
+
+<ol>
+    <li id="src1"><a href="PDF_1_LINK" target="_blank">Источник 1 — PDF</a></li>
+    <li id="src2"><a href="PDF_2_LINK" target="_blank">Источник 2 — PDF</a></li>
+    <li id="src3"><a href="PDF_3_LINK" target="_blank">Источник 3 — PDF</a></li>
+    <li id="src4"><a href="PDF_4_LINK" target="_blank">Источник 4 — PDF</a></li>
+    <li id="src5"><a href="PDF_5_LINK" target="_blank">Источник 5 — PDF</a></li>
+    <li id="src6"><a href="PDF_6_LINK" target="_blank">Источник 6 — PDF</a></li>
+    <li id="src7"><a href="PDF_7_LINK" target="_blank">Источник 7 — PDF</a></li>
+    <li id="src8"><a href="PDF_8_LINK" target="_blank">Источник 8 — PDF</a></li>
+    <li id="src9"><a href="PDF_9_LINK" target="_blank">Источник 9 — PDF</a></li>
+    <li id="src10"><a href="PDF_10_LINK" target="_blank">Источник 10 — PDF</a></li>
+    <li id="src11"><a href="PDF_11_LINK" target="_blank">Источник 11 — PDF</a></li>
+    <li id="src12"><a href="PDF_12_LINK" target="_blank">Источник 12 — PDF</a></li>
+    <li id="src13"><a href="PDF_13_LINK" target="_blank">Источник 13 — PDF</a></li>
+    <li id="src14"><a href="PDF_14_LINK" target="_blank">Источник 14 — PDF</a></li>
+    <li id="src15"><a href="PDF_15_LINK" target="_blank">Источник 15 — PDF</a></li>
+    <li id="src16"><a href="PDF_16_LINK" target="_blank">Источник 16 — PDF</a></li>
+    <li id="src17"><a href="PDF_17_LINK" target="_blank">Источник 17 — PDF</a></li>
+    <li id="src18"><a href="PDF_18_LINK" target="_blank">Источник 18 — PDF</a></li>
+    <li id="src19"><a href="PDF_19_LINK" target="_blank">Источник 19 — PDF</a></li>
+    <li id="src20"><a href="PDF_20_LINK" target="_blank">Источник 20 — PDF</a></li>
+    <li id="src21"><a href="PDF_21_LINK" target="_blank">Источник 21 — PDF</a></li>
+    <li id="src22"><a href="PDF_22_LINK" target="_blank">Источник 22 — PDF</a></li>
+    <li id="src23"><a href="PDF_23_LINK" target="_blank">Источник 23 — PDF</a></li>
+    <li id="src24"><a href="PDF_24_LINK" target="_blank">Источник 24 — PDF</a></li>
+    <li id="src25"><a href="PDF_25_LINK" target="_blank">Источник 25 — PDF</a></li>
+</ol>
+
+<hr>
+
+<h3>Ссылки на официальные движки</h3>
+<ul>
+    <li><a href="https://developer.nvidia.com/physx" target="_blank">NVIDIA PhysX</a></li>
+    <li><a href="https://pybullet.org/" target="_blank">Bullet Physics</a></li>
+    <li><a href="https://www.havok.com/" target="_blank">Havok</a></li>
+    <li><a href="https://unity.com/physics" target="_blank">Unity Physics</a></li>
+</ul>
+
+</body>
+</html>
+-->
