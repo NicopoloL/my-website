@@ -39,6 +39,21 @@
         </div>
     </section>
 
+    <!-- Видео в виде кружка -->
+    <section class="video-circle-section">
+        <div class="container">
+            <div class="video-circle-container">
+                <div class="video-circle">
+                    <video loop controls onclick="this.paused ? this.play() : this.pause();">
+                        <source src="videos/demo.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео тег.
+                    </video>
+                </div>
+                <p class="video-caption">Нажмите на видео для воспроизведения/паузы</p>
+            </div>
+        </div>
+    </section>
+
     <!-- О себе -->
     <section id="about" class="section-light">
         <div class="container">
@@ -46,14 +61,6 @@
             <div class="about-content">
                 <div class="about-img">
                     <img src="images/Test1.jpg" alt="Синяев Александр Витальевич">
-                    <!-- Видео-кружок (изначально скрыто) -->
-                    <!--<div id="video-overlay" class="video-overlay">
-                        <video id="telegram-video" controls>
-                            <source src="videos/telegram_video.mp4" type="video/mp4">
-                            Ваш браузер не поддерживает видео.
-                        </video>
-                        <button id="close-video" class="close-btn">×</button>
-                    </div>-->
                 </div>
                 <div class="about-text">
                     <p>Магистр ДонНТУ, программный инженер. Практикующий разработчик с опытом создания программного обеспечения на заказ.</p>
