@@ -744,6 +744,40 @@ a:hover {
     margin-bottom: 2.5rem; 
 }
 
+.hero .btn {
+    background: var(--secondary);
+    color: var(--primary);
+}
+
+.hero .btn:hover {
+    background: #ff6b7a;
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.hero-link {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.hero-link:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+.hero-content a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.hero-content a:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
 /* Стили для ссылок на источники в тексте */
 a.ref-link {
     color: var(--text) !important;
