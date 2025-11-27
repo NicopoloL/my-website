@@ -141,6 +141,18 @@ a:hover {
     background: var(--primary);
 }
 
+#indidvid {
+    padding-bottom: 0;
+}
+
+.section-light + .section-light {
+    padding-top: 0;
+}
+
+.section-dark + .section-dark{
+    padding-top: 0;
+}
+
 /* Стили для сетки навыков */
 .skills-grid {
     display: grid;
@@ -623,4 +635,49 @@ a:hover {
 .table-container:last-child,
 .skills-grid:last-child {
     margin-bottom: 2.5rem; 
+}
+
+/* Стили для ссылок на источники в тексте */
+a.ref-link {
+    color: var(--text) !important;
+    text-decoration: none;
+}
+
+a.ref-link:hover {
+    color: var(--secondary) !important;
+    text-decoration: underline;
+}
+
+/* Отступ для якорей, чтобы контент не перекрывался фиксированным меню */
+a[name] {
+    display: block;
+    position: relative;
+    top: -100px; /* Высота меню + небольшой отступ */
+    visibility: hidden;
+}
+
+h2, h3, h4 {
+    scroll-margin-top: -800px; /* Для современных браузеров */
+}
+/* Стили для нумерованного списка источников */
+.references-list ol {
+    list-style-type: decimal;
+    margin-left: 30px;
+    margin-bottom: 2rem;
+}
+
+.references-list li {
+    margin-bottom: 15px;
+    padding-left: 10px;
+    line-height: 1.6;
+    scroll-margin-top: 80px; /* Для плавной прокрутки к источнику */
+}
+
+.references-list li a {
+    transition: var(--transition);
+}
+
+.references-list li a:hover {
+    color: var(--secondary);
+    text-decoration: underline;
 }
