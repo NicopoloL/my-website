@@ -374,6 +374,80 @@ nav a:hover {
     margin-top: 15px;
 }
 
+/* Адаптивность для видео */
+@media (max-width: 1024px) {
+    .video-circle {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .video-circle {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .video-caption {
+        font-size: 0.9rem;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-circle {
+        width: 250px;
+        height: 250px;
+        border-width: 3px;
+    }
+    
+    .video-circle-section {
+        padding: 40px 0;
+    }
+}
+
+@media (max-width: 360px) {
+    .video-circle {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .video-caption {
+        font-size: 0.85rem;
+    }
+}
+
+/* Адаптивность для touch-устройств */
+@media (hover: none) and (pointer: coarse) {
+    .video-circle:hover {
+        transform: none;
+        box-shadow: 0 0 30px rgba(255, 70, 85, 0.4);
+    }
+}
+
+/* Скрываем стандартные элементы управления видео */
+.video-circle video::-webkit-media-controls {
+    display: none !important;
+}
+
+.video-circle video::-webkit-media-controls-panel {
+    display: none !important;
+}
+
+.video-circle video::-webkit-media-controls-play-button {
+    display: none !important;
+}
+
+.video-circle video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+}
+
+.video-caption {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-top: 15px;
+}
+
 /* Контакты */
 .contact {
     border-top: 1px solid var(--accent);
