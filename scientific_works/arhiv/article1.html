@@ -94,7 +94,7 @@
                     <li>Поведение верёвок</li>
                 </ul>
                 
-                <p>Рассмотрим работу физического движка на примере динамики твёрдого тела (многие методы применимы и к другим типам). Физический движок должен уметь выполнять такие запросы, как «добавить тело», «получить позицию/ориентацию тела», «симулировать шаг времени» и другие. Основное внимание уделим функции «симуляции шага времени», которая выполняется каждый кадр [1].</p>
+                <p>Рассмотрим работу физического движка на примере динамики твёрдого тела (многие методы применимы и к другим типам). Физический движок должен уметь выполнять такие запросы, как «добавить тело», «получить позицию/ориентацию тела», «симулировать шаг времени» и другие. Основное внимание уделим функции «симуляции шага времени», которая выполняется каждый кадр <a href="#src1" class="ref-link">[1]</a>.</p>
                 
                 <h3>Широкая фаза</h3>
                 
@@ -114,7 +114,7 @@
                 <p>После Широкой фазы следует Узкая фаза, где используются алгоритмы для поиска коллизий выпуклых объектов, Среди алгоритмов, подходящих для этой задачи, можно выделить:</p>
                 
                 <ul class="feature-list">
-                    <li>Алгоритм основанный на теореме разделяющей оси. Эта теорема утверждает, что два выпуклых объекта пересекаются тогда и только тогда, когда существует плоскость (или прямая в двумерном пространстве), разделяющая их [2]</li>
+                    <li>Алгоритм основанный на теореме разделяющей оси. Эта теорема утверждает, что два выпуклых объекта пересекаются тогда и только тогда, когда существует плоскость (или прямая в двумерном пространстве), разделяющая их <a href="#src2" class="ref-link">[2]</a></li>
                     <li>V-Clip / Lin Canny — алгоритмы, которые лучше всего подходят для физики, исключающей взаимопроникновение тел</li>
                     <li>Gilbert-Johnson-Keerthi / Expanded Polytope Algorithm — мощные алгоритмы, основанные на Сумме Минковского, которые не ограничены многогранниками</li>
                 </ul>
@@ -130,7 +130,7 @@
                     <li>Корректировка позиций объектов, чтобы устранить случаи их проникновения друг в друга</li>
                 </ul>
                 
-                <p>Завершающим этапом является интегрирование позиций, что включает в себя смещение всех тел в сцене. Этот процесс относительно прост в реализации и использует несколько эффективных алгоритмов, таких как интеграторы по Эйлеру, Ньютону и Рунге-Кутта. Весь описанный процесс сопровождается различными функциями, такими как коллбэки (callbacks) для событий и фризинг (freezing/sleeping) тел, которые исключаются из обработки алгоритмов, если они долго находятся в покое [3].</p>
+                <p>Завершающим этапом является интегрирование позиций, что включает в себя смещение всех тел в сцене. Этот процесс относительно прост в реализации и использует несколько эффективных алгоритмов, таких как интеграторы по Эйлеру, Ньютону и Рунге-Кутта. Весь описанный процесс сопровождается различными функциями, такими как коллбэки (callbacks) для событий и фризинг (freezing/sleeping) тел, которые исключаются из обработки алгоритмов, если они долго находятся в покое <a href="#src3" class="ref-link">[3]</a>.</p>
             </div>
 
             <a name="engines"></a>
@@ -141,11 +141,11 @@
                 
                 <p>Они обеспечивают разработчиков инструментами для симуляции физических процессов, что способствует созданию увлекательного и насыщенного игрового опыта. Фактически, чаще всего эти инструменты имеют форму API. Они позволяют легко интегрировать физику в игровые механики, управлять столкновениями, гравитацией и динамикой объектов, а также обеспечивать взаимодействие между различными элементами виртуального мира.</p>
                 
-                <p>В этой статье мы проанализируем несколько известных физических движков, таких как PhysX, Havok, Bullet и Unity Physics, оценим их особенности, выявим достоинства и недостатки и проведем сравнительный анализ [4].</p>
+                <p>В этой статье мы проанализируем несколько известных физических движков, таких как PhysX, Havok, Bullet и Unity Physics, оценим их особенности, выявим достоинства и недостатки и проведем сравнительный анализ <a href="#src4" class="ref-link">[4]</a>.</p>
                 
                 <h3>2.1 Возможности PhysX</h3>
                 
-                <p>PhysX — это физический движок, созданный компанией NVIDIA, предназначенный для симуляции физики в реальном времени в видеоиграх и различных приложениях. Он предоставляет разработчикам возможность реализовывать реалистичные физические взаимодействия между объектами, включая динамику твердых тел, жидкости, ткани и другие эффекты [5].</p>
+                <p>PhysX — это физический движок, созданный компанией NVIDIA, предназначенный для симуляции физики в реальном времени в видеоиграх и различных приложениях. Он предоставляет разработчикам возможность реализовывать реалистичные физические взаимодействия между объектами, включая динамику твердых тел, жидкости, ткани и другие эффекты <a href="#src5" class="ref-link">[5]</a>.</p>
                 
                 <h4>Характеристики:</h4>
                 
@@ -177,14 +177,14 @@
                 <h4>PhysX использовался в таких играх как:</h4>
                 
                 <ul class="feature-list">
-                    <li>"Metro: Last Light" [6]: PhysX использовался для создания реалистичных эффектов воды и разрушений. На сегодняшний момент приобрести оригинальную игру можно только на физических носителях.</li>
-                    <li>"Gears of War 3" [7]: В этой игре PhysX применялся для симуляции разрушений и взаимодействия объектов в бою.</li>
-                    <li>"The Witcher 3: Wild Hunt" [8]: Движок применялся для создания правдоподобных эффектов воды и взаимодействия с окружающей средой.</li>
+                    <li>"Metro: Last Light" <a href="#src6" class="ref-link">[6]</a>: PhysX использовался для создания реалистичных эффектов воды и разрушений. На сегодняшний момент приобрести оригинальную игру можно только на физических носителях.</li>
+                    <li>"Gears of War 3" <a href="#src7" class="ref-link">[7]</a>: В этой игре PhysX применялся для симуляции разрушений и взаимодействия объектов в бою.</li>
+                    <li>"The Witcher 3: Wild Hunt" <a href="#src8" class="ref-link">[8]</a>: Движок применялся для создания правдоподобных эффектов воды и взаимодействия с окружающей средой.</li>
                 </ul>
                 
                 <h3>2.2 Возможности Havok</h3>
                 
-                <p>Havok — это мощный физический движок, разработанный компанией Havok, который был выпущен в 2000 году. Он поддерживает реалистичное моделирование физических взаимодействий в реальном времени и используется во множестве игр и приложений [9].</p>
+                <p>Havok — это мощный физический движок, разработанный компанией Havok, который был выпущен в 2000 году. Он поддерживает реалистичное моделирование физических взаимодействий в реальном времени и используется во множестве игр и приложений <a href="#src9" class="ref-link">[9]</a>.</p>
                 
                 <h4>Основные характеристики Havok включают:</h4>
                 
@@ -216,14 +216,14 @@
                 <h4>Havok использовался в множестве известных игр и франшиз, включая:</h4>
                 
                 <ul class="feature-list">
-                    <li>"The Elder Scrolls V: Skyrim" [10]: Обеспечивает реалистичное взаимодействие предметов и управления физикой в открытом мире.</li>
-                    <li>"Half-Life 2" [11]: Использован для создания сложной физики, включая взаимодействия объектов и физические головоломки.</li>
-                    <li>"Call of Duty" (серия) [12]: Для управления реалистичными взрывами, пулями и разрушениями окружающей среды.</li>
+                    <li>"The Elder Scrolls V: Skyrim" <a href="#src10" class="ref-link">[10]</a>: Обеспечивает реалистичное взаимодействие предметов и управления физикой в открытом мире.</li>
+                    <li>"Half-Life 2" <a href="#src11" class="ref-link">[11]</a>: Использован для создания сложной физики, включая взаимодействия объектов и физические головоломки.</li>
+                    <li>"Call of Duty" (серия) <a href="#src12" class="ref-link">[12]</a>: Для управления реалистичными взрывами, пулями и разрушениями окружающей среды.</li>
                 </ul>
                 
                 <h3>2.3 Возможности Bullet</h3>
                 
-                <p>Bullet - это открытый физический движок, использующий C++ и поддерживающий различные языки (например, Python через PyBullet) [13].</p>
+                <p>Bullet - это открытый физический движок, использующий C++ и поддерживающий различные языки (например, Python через PyBullet) <a href="#src13" class="ref-link">[13]</a>.</p>
                 
                 <h4>Характеристики:</h4>
                 
@@ -255,14 +255,14 @@
                 <h4>Bullet использовался в различных проектах, включая:</h4>
                 
                 <ul class="feature-list">
-                    <li>"Grand Theft Auto V" [14]: Используется для имитации физики транспортных средств и взаимодействий между объектами в открытом мире.</li>
-                    <li>"Doom 3" [15]: Применяется для обработки столкновений и физики объектов.</li>
-                    <li>"Red Dead Redemption 2" [16]: Здесь Bullet обрабатывает физику среды и персонажей, взаимодействующих со сложным миром игры.</li>
+                    <li>"Grand Theft Auto V" <a href="#src14" class="ref-link">[14]</a>: Используется для имитации физики транспортных средств и взаимодействий между объектами в открытом мире.</li>
+                    <li>"Doom 3" <a href="#src15" class="ref-link">[15]</a>: Применяется для обработки столкновений и физики объектов.</li>
+                    <li>"Red Dead Redemption 2" <a href="#src16" class="ref-link">[16]</a>: Здесь Bullet обрабатывает физику среды и персонажей, взаимодействующих со сложным миром игры.</li>
                 </ul>
                 
                 <h3>2.4 Возможности Unity Physics</h3>
                 
-                <p>Unity Physics --- это встроенный физический движок, разработанный для использования в игровом движке Unity. Он предлагает разработчикам эффективные инструменты для реализации правдоподобных физических взаимодействий в 2D и 3D-играх. Основанный на системе ECS (Entity Component System), Unity Physics оптимизирован для работы с большими объемами объектов и обеспечивает высокую производительность, что делает его идеальным выбором для современных игровых проектов [17].</p>
+                <p>Unity Physics --- это встроенный физический движок, разработанный для использования в игровом движке Unity. Он предлагает разработчикам эффективные инструменты для реализации правдоподобных физических взаимодействий в 2D и 3D-играх. Основанный на системе ECS (Entity Component System), Unity Physics оптимизирован для работы с большими объемами объектов и обеспечивает высокую производительность, что делает его идеальным выбором для современных игровых проектов <a href="#src17" class="ref-link">[17]</a>.</p>
                 
                 <h4>Характеристики:</h4>
                 
@@ -294,10 +294,10 @@
                 <h4>Unity Physics активно применяется в разработке различных игр, среди которых:</h4>
                 
                 <ul class="feature-list">
-                    <li>"Cuphead" [18]: известный платформер с ретро-графикой, использующий физический движок для создания динамичных столкновений и анимаций.</li>
-                    <li>"Hollow Knight" [19]: игра в жанре метроидвания, где физические взаимодействия имеют большое значение для игрового процесса.</li>
-                    <li>"Super Mario Run" [20]: мобильная игра с использованием Unity Physics для управления движением персонажей и объектов.</li>
-                    <li>"Ori and the Blind Forest" [21]: эффектная платформенная игра, где физика используется для создания захватывающих игровых механик.</li>
+                    <li>"Cuphead" <a href="#src18" class="ref-link">[18]</a>: известный платформер с ретро-графикой, использующий физический движок для создания динамичных столкновений и анимаций.</li>
+                    <li>"Hollow Knight" <a href="#src19" class="ref-link">[19]</a>: игра в жанре метроидвания, где физические взаимодействия имеют большое значение для игрового процесса.</li>
+                    <li>"Super Mario Run" <a href="#src20" class="ref-link">[20]</a>: мобильная игра с использованием Unity Physics для управления движением персонажей и объектов.</li>
+                    <li>"Ori and the Blind Forest" <a href="#src21" class="ref-link">[21]</a>: эффектная платформенная игра, где физика используется для создания захватывающих игровых механик.</li>
                 </ul>
                 
                 <h3>2.5 Сравнительная таблица движков</h3>
@@ -452,27 +452,27 @@
             
             <div class="references-list">
                 <ol>
-                    <li>"The Role of Physics Engines in Game Development" by Jane Smith [Электронный ресурс] / Режим доступа: <a href="https://archive.org/details/gamephysics0000eber/page/240/mode/2up" target="_blank" rel="noopener">https://archive.org/details/gamephysics0000eber/page/240/mode/2up</a> -- Загл. с экрана (дата обращения: 20.09.2024)</li>
-                    <li>Теорема разделяющей оси [Электронный ресурс] / Режим доступа: <a href="https://gamedev.ru/terms/SAT" target="_blank" rel="noopener">https://gamedev.ru/terms/SAT</a> -- Загл. с экрана (дата обращения: 20.10.2024)</li>
-                    <li>Н.В. Кушнир, К.А. Будников, С.Э. Ирхин, В.А. Никитин, И.О. Майоров БАЗОВОЕ ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ РАЗРАБОТКИ КОМПЬЮТЕРНЫХ ВИДЕОИГР. ИГРОВЫЕ ДВИЖКИ [Электронный ресурс] / Режим доступа: <a href="https://ntk.kubstu.ru/data/mc/0072/3689.pdf" target="_blank" rel="noopener">https://ntk.kubstu.ru/data/mc/0072/3689.pdf</a> -- Загл. с экрана (дата обращения: 22.10.2024)</li>
-                    <li>Козлова П.В. Роль игровой физики в современной гейм-индустрии [Электронный ресурс] / Режим доступа: <a href="https://libeldoc.bsuir.by/bitstream/123456789/48014/1/Kozlova_Rol.pdf" target="_blank" rel="noopener">https://libeldoc.bsuir.by/bitstream/123456789/48014/1/Kozlova_Rol.pdf</a> -- Загл. с экрана (дата обращения: 20.09.2024)</li>
-                    <li>Официальный сайт NVIDIA PhysX System Software [Электронный ресурс] / Режим доступа: <a href="https://www.nvidia.com/en-us/drivers/physx/physx-9-19-0218-driver/" target="_blank" rel="noopener">https://www.nvidia.com/en-us/drivers/physx/physx-9-19-0218-driver/</a> -- Загл. с экрана (дата обращения: 10.10.2024)</li>
-                    <li>Metro: Last Light [Электронный ресурс] / Режим доступа: <a href="https://store.steampowered.com/app/287390/Metro_Last_Light_Redux/" target="_blank" rel="noopener">https://store.steampowered.com/app/287390/Metro_Last_Light_Redux/</a> - Загл. с экрана (дата обращения: 01.11.2024)</li>
-                    <li>Официальный сайт Gears of War 3 [Электронный ресурс] / Режим доступа: <a href="https://www.gearsofwar.com/games/gears-of-war-3/" target="_blank" rel="noopener">https://www.gearsofwar.com/games/gears-of-war-3/</a> -- Загл. с экрана (дата обращения: 02.11.2024)</li>
-                    <li>Официальный сайт The Witcher 3: Wild Hunt [Электронный ресурс] / Режим доступа <a href="https://www.thewitcher.com/nl/ru/" target="_blank" rel="noopener">https://www.thewitcher.com/nl/ru/</a> -- Загл. с экрана (дата обращения: 03.11.2024)</li>
-                    <li>Официальный сайт Havok [Электронный ресурс] / Режим доступа: <a href="https://www.havok.com/" target="_blank" rel="noopener">https://www.havok.com/</a> -- Загл. с экрана (дата обращения: 15.10.2024)</li>
-                    <li>The Elder Scrolls V: Skyrim [Электронный ресурс] / Режим доступа: <a href="https://store.steampowered.com/app/489830/The_Elder_Scrolls_V_Skyrim_Special_Edition/" target="_blank" rel="noopener">https://store.steampowered.com/app/489830/The_Elder_Scrolls_V_Skyrim_Special_Edition/</a> -- Загл. с экрана (дата обращения: 04.11.2024)</li>
-                    <li>Half-Life 2 [Электронный ресурс] / Режим доступа: <a href="https://store.steampowered.com/app/220/HalfLife_2/" target="_blank" rel="noopener">https://store.steampowered.com/app/220/HalfLife_2/</a> -- Загл. с экрана (дата обращения: 05.11.2024)</li>
-                    <li>Официальный сайт Call of Duty [Электронный ресурс] / Режим доступа: <a href="https://www.callofduty.com/nl/" target="_blank" rel="noopener">https://www.callofduty.com/nl/</a> -- Загл. с экрана (дата обращения: 06.11.2024)</li>
-                    <li>Официальный сайт Bullet [Электронный ресурс] / Режим доступа: <a href="https://pybullet.org/wordpress/" target="_blank" rel="noopener">https://pybullet.org/wordpress/</a> -- Загл. с экрана (дата обращения: 20.10.2024)</li>
-                    <li>Grand Theft Auto V [Электронный ресурс] / Режим доступа: <a href="https://www.rockstargames.com/gta-v" target="_blank" rel="noopener">https://www.rockstargames.com/gta-v</a> -- Загл. с экрана (дата обращения: 07.11.2024)</li>
-                    <li>Doom 3 [Электронный ресурс] / Режим доступа: <a href="https://store.steampowered.com/app/208200/DOOM_3/" target="_blank" rel="noopener">https://store.steampowered.com/app/208200/DOOM_3/</a> -- Загл. с экрана (дата обращения: 08.11.2024)</li>
-                    <li>Red Dead Redemption 2 [Электронный ресурс] / Режим доступа: <a href="https://www.rockstargames.com/reddeadredemption2/" target="_blank" rel="noopener">https://www.rockstargames.com/reddeadredemption2/</a> -- Загл. с экрана (дата обращения: 09.11.2024)</li>
-                    <li>Официальный сайт Unity Physics [Электронный ресурс] / Режим доступа: <a href="https://docs.unity3d.com/Packages/com.unity.physics@1.0/manual/index.html" target="_blank" rel="noopener">https://docs.unity3d.com/Packages/com.unity.physics@1.0/manual/index.html</a> -- Загл. с экрана (дата обращения: 25.10.2024)</li>
-                    <li>Официальный сайт Cuphead [Электронный ресурс] / Режим доступа: <a href="https://cupheadgame.com/" target="_blank" rel="noopener">https://cupheadgame.com/</a> -- Загл. с экрана (дата обращения: 10.11.2024)</li>
-                    <li>Hollow Knight [Электронный ресурс] / Режим доступа: <a href="https://store.steampowered.com/app/367520/Hollow_Knight/" target="_blank" rel="noopener">https://store.steampowered.com/app/367520/Hollow_Knight/</a> -- Загл. с экрана (дата обращения: 11.11.2024)</li>
-                    <li>Super Mario Run [Электронный ресурс] / Режим доступа: <a href="https://play.google.com/store/apps/details?id=com.nintendo.zara&hl=en-US&pli=1" target="_blank" rel="noopener">https://play.google.com/store/apps/details?id=com.nintendo.zara&hl=en-US&pli=1</a> -- Загл. с экрана (дата обращения: 12.10.2024)</li>
-                    <li>Ori and the Blind Forest [Электронный ресурс] / Режим доступа: <a href="https://store.steampowered.com/app/387290/Ori_and_the_Blind_Forest_Definitive_Edition/" target="_blank" rel="noopener">https://store.steampowered.com/app/387290/Ori_and_the_Blind_Forest_Definitive_Edition/</a> -- Загл. с экрана (дата обращения: 13.11.2024)</li>
+                    <li id="src1">"The Role of Physics Engines in Game Development" by Jane Smith [Электронный ресурс] / Режим доступа: <a href="https://archive.org/details/gamephysics0000eber/page/240/mode/2up" target="_blank" rel="noopener">https://archive.org/details/gamephysics0000eber/page/240/mode/2up</a> -- Загл. с экрана (дата обращения: 20.09.2024)</li>
+                    <li id="src2">Теорема разделяющей оси [Электронный ресурс] / Режим доступа: <a href="https://gamedev.ru/terms/SAT" target="_blank" rel="noopener">https://gamedev.ru/terms/SAT</a> -- Загл. с экрана (дата обращения: 20.10.2024)</li>
+                    <li id="src3">Н.В. Кушнир, К.А. Будников, С.Э. Ирхин, В.А. Никитин, И.О. Майоров БАЗОВОЕ ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ РАЗРАБОТКИ КОМПЬЮТЕРНЫХ ВИДЕОИГР. ИГРОВЫЕ ДВИЖКИ [Электронный ресурс] / Режим доступа: <a href="https://ntk.kubstu.ru/data/mc/0072/3689.pdf" target="_blank" rel="noopener">https://ntk.kubstu.ru/data/mc/0072/3689.pdf</a> -- Загл. с экрана (дата обращения: 22.10.2024)</li>
+                    <li id="src4">Козлова П.В. Роль игровой физики в современной гейм-индустрии [Электронный ресурс] / Режим доступа: <a href="https://libeldoc.bsuir.by/bitstream/123456789/48014/1/Kozlova_Rol.pdf" target="_blank" rel="noopener">https://libeldoc.bsuir.by/bitstream/123456789/48014/1/Kozlova_Rol.pdf</a> -- Загл. с экрана (дата обращения: 20.09.2024)</li>
+                    <li id="src5">Официальный сайт NVIDIA PhysX System Software [Электронный ресурс] / Режим доступа: <a href="https://www.nvidia.com/en-us/drivers/physx/physx-9-19-0218-driver/" target="_blank" rel="noopener">https://www.nvidia.com/en-us/drivers/physx/physx-9-19-0218-driver/</a> -- Загл. с экрана (дата обращения: 10.10.2024)</li>
+                    <li id="src6">Metro: Last Light [Электронный ресурс] / Режим доступа: <a href="https://store.steampowered.com/app/287390/Metro_Last_Light_Redux/" target="_blank" rel="noopener">https://store.steampowered.com/app/287390/Metro_Last_Light_Redux/</a> - Загл. с экрана (дата обращения: 01.11.2024)</li>
+                    <li id="src7">Официальный сайт Gears of War 3 [Электронный ресурс] / Режим доступа: <a href="https://www.gearsofwar.com/games/gears-of-war-3/" target="_blank" rel="noopener">https://www.gearsofwar.com/games/gears-of-war-3/</a> -- Загл. с экрана (дата обращения: 02.11.2024)</li>
+                    <li id="src8">Официальный сайт The Witcher 3: Wild Hunt [Электронный ресурс] / Режим доступа <a href="https://www.thewitcher.com/nl/ru/" target="_blank" rel="noopener">https://www.thewitcher.com/nl/ru/</a> -- Загл. с экрана (дата обращения: 03.11.2024)</li>
+                    <li id="src9">Официальный сайт Havok [Электронный ресурс] / Режим доступа: <a href="https://www.havok.com/" target="_blank" rel="noopener">https://www.havok.com/</a> -- Загл. с экрана (дата обращения: 15.10.2024)</li>
+                    <li id="src10">The Elder Scrolls V: Skyrim [Электронный ресурс] / Режим доступа: <a href="https://store.steampowered.com/app/489830/The_Elder_Scrolls_V_Skyrim_Special_Edition/" target="_blank" rel="noopener">https://store.steampowered.com/app/489830/The_Elder_Scrolls_V_Skyrim_Special_Edition/</a> -- Загл. с экрана (дата обращения: 04.11.2024)</li>
+                    <li id="src11">Half-Life 2 [Электронный ресурс] / Режим доступа: <a href="https://store.steampowered.com/app/220/HalfLife_2/" target="_blank" rel="noopener">https://store.steampowered.com/app/220/HalfLife_2/</a> -- Загл. с экрана (дата обращения: 05.11.2024)</li>
+                    <li id="src12">Официальный сайт Call of Duty [Электронный ресурс] / Режим доступа: <a href="https://www.callofduty.com/nl/" target="_blank" rel="noopener">https://www.callofduty.com/nl/</a> -- Загл. с экрана (дата обращения: 06.11.2024)</li>
+                    <li id="src13">Официальный сайт Bullet [Электронный ресурс] / Режим доступа: <a href="https://pybullet.org/wordpress/" target="_blank" rel="noopener">https://pybullet.org/wordpress/</a> -- Загл. с экрана (дата обращения: 20.10.2024)</li>
+                    <li id="src14">Grand Theft Auto V [Электронный ресурс] / Режим доступа: <a href="https://www.rockstargames.com/gta-v" target="_blank" rel="noopener">https://www.rockstargames.com/gta-v</a> -- Загл. с экрана (дата обращения: 07.11.2024)</li>
+                    <li id="src15">Doom 3 [Электронный ресурс] / Режим доступа: <a href="https://store.steampowered.com/app/208200/DOOM_3/" target="_blank" rel="noopener">https://store.steampowered.com/app/208200/DOOM_3/</a> -- Загл. с экрана (дата обращения: 08.11.2024)</li>
+                    <li id="src16">Red Dead Redemption 2 [Электронный ресурс] / Режим доступа: <a href="https://www.rockstargames.com/reddeadredemption2/" target="_blank" rel="noopener">https://www.rockstargames.com/reddeadredemption2/</a> -- Загл. с экрана (дата обращения: 09.11.2024)</li>
+                    <li id="src17">Официальный сайт Unity Physics [Электронный ресурс] / Режим доступа: <a href="https://docs.unity3d.com/Packages/com.unity.physics@1.0/manual/index.html" target="_blank" rel="noopener">https://docs.unity3d.com/Packages/com.unity.physics@1.0/manual/index.html</a> -- Загл. с экрана (дата обращения: 25.10.2024)</li>
+                    <li id="src18">Официальный сайт Cuphead [Электронный ресурс] / Режим доступа: <a href="https://cupheadgame.com/" target="_blank" rel="noopener">https://cupheadgame.com/</a> -- Загл. с экрана (дата обращения: 10.11.2024)</li>
+                    <li id="src19">Hollow Knight [Электронный ресурс] / Режим доступа: <a href="https://store.steampowered.com/app/367520/Hollow_Knight/" target="_blank" rel="noopener">https://store.steampowered.com/app/367520/Hollow_Knight/</a> -- Загл. с экрана (дата обращения: 11.11.2024)</li>
+                    <li id="src20">Super Mario Run [Электронный ресурс] / Режим доступа: <a href="https://play.google.com/store/apps/details?id=com.nintendo.zara&hl=en-US&pli=1" target="_blank" rel="noopener">https://play.google.com/store/apps/details?id=com.nintendo.zara&hl=en-US&pli=1</a> -- Загл. с экрана (дата обращения: 12.10.2024)</li>
+                    <li id="src21">Ori and the Blind Forest [Электронный ресурс] / Режим доступа: <a href="https://store.steampowered.com/app/387290/Ori_and_the_Blind_Forest_Definitive_Edition/" target="_blank" rel="noopener">https://store.steampowered.com/app/387290/Ori_and_the_Blind_Forest_Definitive_Edition/</a> -- Загл. с экрана (дата обращения: 13.11.2024)</li>
                 </ol>
             </div>
         </div>

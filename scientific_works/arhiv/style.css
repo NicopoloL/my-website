@@ -610,3 +610,14 @@ h2, h3, h4 {
     margin-bottom: 2rem;
     color: var(--text-light);
 }
+/* Формула */
+        .formula {
+            background: var(--accent);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            border: 1px solid #3a3a4a;
+        }
