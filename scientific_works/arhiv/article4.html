@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автоматизированное моделирование механических компонентов в САПР</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Базовые стили из предоставленного CSS */
+        :root {
+            --primary: #0a0a12;
+            --secondary: #ff4655;
+            --accent: #2a2a3a;
+            --light: #161622;
+            --dark: #e0e0e0;
+            --text: #e0e0e0;
+            --text-light: #8a8aa3;
+            --shadow: 0 4px 6px rgba(255, 70, 85, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            color: var(--secondary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: #ff6b7a;
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--secondary);
+            color: var(--primary);
+            border-radius: 4px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background: #ff6b7a;
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Общие стили для секций с фоном */
+        .section-light {
+            background: var(--light);
+        }
+
+        .section-dark {
+            background: var(--primary);
+        }
+
+        /* Шапка */
+        header {
+            background: linear-gradient(135deg, var(--primary), #050508);
+            color: var(--dark);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 20px;
+        }
+
+        nav a {
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* Герой секция */
+        .hero {
+            background: linear-gradient(rgba(10, 10, 18, 0.9), rgba(10, 10, 18, 0.95));
+            background-size: cover;
+            background-position: center;
+            color: var(--dark);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            color: var(--dark);
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        /* Авторы и аннотация */
+        .authors {
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .abstract {
+            background: var(--accent);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .keywords {
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        /* Основное содержание */
+        .article-content {
+            margin-top: 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        /* Списки */
+        .feature-list, .pros-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list li, .pros-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text);
+        }
+
+        .feature-list li:before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+
+        .pros-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Стили для ограничений и преимуществ */
+        .limitations-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .limitations-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text);
+        }
+
+        .limitations-list li:before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #f44336;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Стили для нумерованных списков */
+        .numbered-list {
+            list-style-type: decimal;
+            margin-left: 30px;
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+
+        .numbered-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        /* Стили для рисунков */
+        .figure {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .figure-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            border: 1px solid #3a3a4a;
+        }
+
+        .figure-caption {
+            margin-top: 10px;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        /* Литература */
+        .references-list ol {
+            list-style: decimal;
+            margin-left: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .references-list li {
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        /* Футер */
+        footer {
+            background: #050508;
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--accent);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            margin: 0 15px;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Отступ для якорей */
+        a[name] {
+            display: block;
+            position: relative;
+            top: -100px;
+            visibility: hidden;
+        }
+
+        h2, h3, h4 {
+            scroll-margin-top: 100px;
+        }
+
+        /* Цитаты и важные моменты */
+        .highlight {
+            background: rgba(255, 70, 85, 0.1);
+            border-left: 4px solid var(--secondary);
+            padding: 15px 20px;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Григорьев <span>А.В.</span> & Бондаренко <span>Е.С.</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">На главную</a></li>
+                        <li><a href="#intro">Введение</a></li>
+                        <li><a href="#limitations">Ограничения</a></li>
+                        <li><a href="#methodology">Методология</a></li>
+                        <li><a href="#conclusion">Заключение</a></li>
+                        <li><a href="#literature">Литература</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой секция -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Автоматизированное моделирование механических компонентов в САПР</h1>
+                <p>Методология автоматизации процессов геометрического моделирования для повышения эффективности проектирования</p>
+                <a href="#intro" class="btn">Читать статью</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Основное содержание -->
+    <section class="section-light">
+        <div class="container">
+            <!-- Авторы -->
+            <div class="authors">
+                <p><strong>Григорьев А. В.</strong> - кандидат технических наук, профессор, Донецкий национальный технический университет, e-mail: grigorievalvl@gmail.com</p>
+                <p><strong>Бондаренко Е. С.</strong> - магистрант, Донецкий национальный технический университет, e-mail: katusha.bondarencko@yandex.ua</p>
+            </div>
+
+            <!-- Аннотация -->
+            <div class="abstract">
+                <p><strong>Григорьев А. В., Бондаренко Е. С. Автоматизированное моделирование механических компонентов в САПР.</strong> Большинство обрабатывающих производств производят аналогичные компоненты, из которых проектировщик должен моделировать подобные продукты снова и снова, что не только отнимает много времени, но и вызывает утомление оператора и снижение продуктивности дизайнера. Различные виды деятельности отдела САПР можно автоматизировать, чтобы освободить дизайнера от повторяющихся задач и выполнить другие важные функции, такие как анализ, которые нельзя автоматизировать. В данной работе продемонстрировано, как геометрическое моделирование можно полностью автоматизировать, снижая вероятность возникновения ошибок и повышая общую эффективность процесса проектирования.</p>
+                <div class="keywords">
+                    <p><strong>Ключевые слова:</strong> графический интерфейс, интерфейс прикладного программирования (API), геометрическое моделирование в САПР, программное обеспечение, автоматизация.</p>
+                </div>
+            </div>
+
+            <!-- Введение -->
+            <a name="intro"></a>
+            <div class="content-section">
+                <h2>Введение</h2>
+                <div class="article-content">
+                    <p>В течение последних нескольких десятилетий программное обеспечение САПР широко используется для повышения продуктивности дизайнера, улучшения качества дизайна и обмена опытом с помощью документации, а также создания базы данных для проектирования. Это связано с преимуществами систем, такими как меньшее времени разработки, т.е. меньшее время вывода на рынок, простота модификации, улучшенное качество и производительность, меньшее количество итераций проектирования и т. д.</p>
+                    
+                    <p>Разнообразие программного обеспечения САПР, доступного на рынке, становится все более и более универсальным, чтобы соответствовать цели широкого спектра отрасли. Но сложно найти программное обеспечение, которое отвечало бы всем требованиям конкретной отрасли. Следовательно, в программном обеспечении САПР должно быть некое средство для моделирования объектов для удовлетворения потребностей конкретной области промышленности. Это можно сделать, настроив программное обеспечение САПР в соответствии с прикладным программированием интерфейса (API), в котором различные объекты программного обеспечения САПР могут использоваться в программе и приложении.</p>
+                    
+                    <div class="highlight">
+                        <p><strong>Цель исследования:</strong> Демонстрация полной автоматизации геометрического моделирования для снижения вероятности ошибок и повышения общей эффективности процесса проектирования.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ограничения геометрического моделирования САПР -->
+            <a name="limitations"></a>
+            <div class="content-section">
+                <h2>Ограничения геометрического моделирования САПР</h2>
+                <div class="article-content">
+                    <p>Программное обеспечение САПР прочно вошло в отрасль благодаря множеству преимуществ. Однако оно имеет следующие ограничения:</p>
+                    
+                    <ul class="limitations-list">
+                        <li>Требуется квалифицированная рабочая сила;</li>
+                        <li>Процессы моделирования отнимают много времени;</li>
+                        <li>Более высокая стоимость программного обеспечения;</li>
+                        <li>Более высокая заработная плата оператора;</li>
+                        <li>Вероятность ошибок, связанных с человеческим фактором;</li>
+                        <li>Вероятность ошибок при оформлении.</li>
+                    </ul>
+                    
+                    <h3>Альтернативные методы</h3>
+                    <p>Вышеуказанные проблемы возможно решить одним из альтернативных способов, как указано ниже:</p>
+                    
+                    <ul class="feature-list">
+                        <li>Сохранение главного файла для каждого типа компонента, а затем его изменение в соответствии с требованиями;</li>
+                        <li>Использование «таблицы переменных», предоставленной программным обеспечением САПР;</li>
+                        <li>Использование определенного варианта набора деталей, если это предусмотрено программой САПР.</li>
+                    </ul>
+                    
+                    <h3>Ограничения существующих методов</h3>
+                    <p>Все методы, описанные выше, имеют несколько недостатков:</p>
+                    
+                    <ul class="limitations-list">
+                        <li>Требуется сохранить графический мастер-файл;</li>
+                        <li>Изменения формы не могут быть приспособлены;</li>
+                        <li>Требуемый навык не может быть полностью исключен;</li>
+                        <li>Ошибка может закрасться из-за неверного ввода данных из каталогов;</li>
+                        <li>Возможны случайные изменения в мастер-файлах;</li>
+                        <li>Программное обеспечение может быть повреждено или случайно удалено.</li>
+                    </ul>
+                    
+                    <h3>Библиотеки деталей и электронные чертежи</h3>
+                    <p>Легко заметить, что для любой из механических систем более 60% компонентов либо стандартные компоненты, такие как подшипники, винты, гайки, болты и т.д., или обычно требуемые механические компоненты такие как валы, шпонки, муфты и т.д. Моделирование этих компонентов на повторение занимает много времени.</p>
+                    
+                    <p>Существуют различные библиотеки деталей в соответствии с разными стандартами. Один раз установив, библиотеки деталей можно просмотреть с помощью обозревателя библиотек, чтобы части деталей можно было вставлять в чертежи.</p>
+                    
+                    <div class="figure">
+                        <div class="figure-placeholder">
+                            <p style="color: var(--text-light); font-style: italic;">Рисунок 1 – Форма для ввода данных</p>
+                        </div>
+                        <div class="figure-caption">Рисунок 1 – Пример интерфейса для ввода данных пользователем</div>
+                    </div>
+                    
+                    <p>Многие программы предоставляют в Интернете наиболее часто используемые модели в виде электронных чертежей почти для всех программных обеспечений САПР. Электронные чертежи - это главный инструмент коммуникации в 2D и 3D дизайне для внутренних и внешних проектных групп, которые предоставляют богатый набор инструментов для совместной работы и позволяют ускорить процесс проектирования.</p>
+                    
+                    <h3>Определение проблемы</h3>
+                    <p>По мере того, как методы моделирования САПР становятся все более продвинутыми, возникает потребность в доработке продукта. Моделирование и проектирование меняются быстрее, чем когда-либо. Обновление сборок, состоящих из сотен узлов и деталей вручную в программном обеспечении для 3D-моделирования очень сложно и требует много времени.</p>
+                    
+                    <p>Для того чтобы уменьшить время разработки, минимизировать количество ошибок и быстрее внедрить технологий на рынок, многие компании все больше обращаются к автоматизации процессов. Настоящее исследование направлено на автоматизацию различных действий конструкторских отделов основных механических компонентов.</p>
+                </div>
+            </div>
+
+            <!-- Методология -->
+            <a name="methodology"></a>
+            <div class="content-section">
+                <h2>Методология</h2>
+                <div class="article-content">
+                    <p>Новый подход интерфейса прикладного программирования (API) используется в настоящем исследовании для достижения вышеуказанной цели. API служит интерфейсом между различными программами и облегчает их взаимодействие, аналогично тому, как пользовательский интерфейс облегчает взаимодействие между людьми и компьютерами.</p>
+                    
+                    <p>API выражает программный компонент с точки зрения его операций, входов, выходов и базовых типов, определяющих функциональные возможности, которые не зависят от их соответствующих реализаций, что позволяет определениям и реализациям варьироваться без ущерба для интерфейсу. Хороший API упрощает разработку программы, предоставляя все строительные блоки, которые затем собираются программистом.</p>
+                    
+                    <p>API может использоваться для веб-системы, операционной системы или системы баз данных, и он предоставляет средства для разработки приложений для этой системы с использованием данного языка программирования.</p>
+                    
+                    <p>API-интерфейсы часто представлены в виде библиотеки, которая включает спецификации для подпрограмм, структур данных, классов объектов и переменных. API для CATIA называется САА и написан на C, C++, Java и Visual Basic. Изначально API был доступен для CAПР, программное обеспечение которых было разработано с использованием языков программирования, таких как FORTRAN, ALGOL, AutoLISP для AutoCAD, GRIP для UniGraphics, ProProgramming для Pro-E и продвинутых языков, таких как C, C++, Visual Basic 6.0, Visual C++ и т.д.</p>
+                    
+                    <h3>Реализация подхода</h3>
+                    <p>В данной работе используемый API для программного обеспечения для моделирования в CAПР CATIA V5 - Visual Basic 6.0. Он связан с инструментами CATIA через VB Editor, а также он может быть подключен в виде внешнего программного обеспечения. "Макрос", используемый для автоматизированного моделирования, написан на языке VB Script.</p>
+                    
+                    <p>Чтобы упростить ввод данных со стороны пользователя и минимизировать требования к навыкам оператора, разработана простая форма VB для ввода данных от пользователя в простом текстовом формате, например, общего размера, емкости и т.д.</p>
+                    
+                    <div class="highlight">
+                        <p><strong>Ключевая особенность системы:</strong> Система обладает развитым интеллектом для расчета размеров на основе эмпирических соотношений и расчетных формул, используемых для часто требуемых компонентов. Кроме того, она также проверяет размеры для уровней напряжений, разработанных в компоненте с использованием различных расчетных формул и самых слабых участков внутри компонентов, чтобы обеспечить безопасность всей конструкции.</p>
+                    </div>
+                    
+                    <p>Если конструкция окажется небезопасной, система изменит спроектированную деталь соответствующим образом, чтобы она стала безопасной. Проектные расчеты предоставляются пользователю для отчетности. Также их можно сохранить и распечатать как отчет о проектировании.</p>
+                    
+                    <p>После утверждения или изменения дизайна по какой-то причине задача моделирования запускается в фоновом режиме. Одна из самых важных особенностей исследования современности состоит в том, что он следует той же последовательности шагов, что и человек-оператор. Теперь каждый компонент моделируется отдельно как отдельный файл детали, и они собираются вместе как подсборка. Это самый естественный способ моделирования компонентов. При необходимости все файлы чертежей также могут быть сгенерированы автоматически.</p>
+                </div>
+            </div>
+
+            <!-- Заключение -->
+            <a name="conclusion"></a>
+            <div class="content-section">
+                <h2>Заключение</h2>
+                <div class="article-content">
+                    <p>В настоящем исследовании предлагается метод использования автоматизированного процесса моделирования часто используемых механических компонентов и узлов. Предлагаемый метод дает следующие преимущества:</p>
+                    
+                    <ol class="numbered-list">
+                        <li>Навыки, необходимые для моделирования САПР, значительно снижаются. От пользователя никогда не требуется использовать программное обеспечение САПР. У пользователя есть только интерфейс в виде VВ-формы.</li>
+                        <li>Стоимость процесса проектирования значительно снижается, так как не требуется квалифицированный оператор.</li>
+                        <li>Поскольку полный процесс моделирования является автоматическим, он занимает очень мало времени.</li>
+                        <li>Режимы подкреплены проектными расчетами, так что окончательный проект гарантирует его безопасность.</li>
+                        <li>Графическая память не используется. Таким образом, экономия затрат на память.</li>
+                        <li>Поскольку модель создается там и тогда, когда это необходимо, транспортировка файлов становится очень простой.</li>
+                        <li>Ошибки моделирования устранены на 100%.</li>
+                        <li>Электронные модели и электронные рисунки можно очень легко сохранять и передавать с помощью очень небольшого количества файлов даже по почте.</li>
+                    </ol>
+                    
+                    <div class="highlight">
+                        <p><strong>Вывод:</strong> Автоматизация процессов геометрического моделирования в САПР с использованием интерфейсов прикладного программирования (API) позволяет значительно повысить эффективность проектирования, снизить требования к квалификации операторов и минимизировать вероятность ошибок, связанных с человеческим фактором.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Литература -->
+            <a name="literature"></a>
+            <div class="content-section">
+                <h2>Литература</h2>
+                <div class="references-list">
+                    <ol>
+                        <li>David J. Kasik The Boeing Company, William Buxton Design David R. Ferguson DRF Associates, IEEE Computer Graphics and Applications, March/April 2005.</li>
+                        <li>Mehdi Tarkian, Design Reuse and Automation (On High Level CAD Modelling for Multidisciplinary Design and Optimization), Printed in Sweden by LiU-Tryck Linkoping, 2009.</li>
+                        <li>Rahul Kumbhar, Dattatray Jadhav, Sanjay Pawar and Narendra Dhamale, "Customization of CATIA V5 for Creating Different Types of Holes on Disc Wheel," International Journal of Engineering Research & Technology, vol. 3, no. 5, pp. 506-509, May-2014.</li>
+                        <li>Siddesh S., B.S.Suresh, Automation of Generating CAD Models, Journal of Mechanical Engineering and Automation 2015.</li>
+                        <li>Tomas Fors, Development of a Modular API for the CAD-System CATIA V5, Master's Degree Project Stockholm, Sweden 2004.</li>
+                        <li>Varun Tiwari, Prashant K. Jain, and Punet Tandon, Member, IAENG, Design Process Automation Proceedings of the World Congress on Engineering 2013 Vol. II, WCE 2013, July 3-5, 2013, London, U.K.</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- Повторение аннотации -->
+            <div class="abstract" style="margin-top: 3rem;">
+                <p><strong>Григорьев А. В., Бондаренко Е. С. Автоматизированное моделирование механических компонентов в САПР.</strong> Большинство обрабатывающих производств производят аналогичные компоненты, из которых проектировщик должен моделировать подобные продукты снова и снова, что не только отнимает много времени, но и вызывает утомление оператора и снижение продуктивности дизайнера. Различные виды деятельности отдела САПР можно автоматизировать, чтобы освободить дизайнера от повторяющихся задач и выполнить другие важные функции, такие как анализ, которые нельзя автоматизировать. В данной работе продемонстрировано, как геометрическое моделирование можно полностью автоматизировать, снижая вероятность возникновения ошибок и повышая общую эффективность процесса проектирования.</p>
+                <div class="keywords">
+                    <p><strong>Ключевые слова:</strong> графический интерфейс, интерфейс прикладного программирования (API), геометрическое моделирование в САПР, программное обеспечение, автоматизация.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="http://donntu.ru" target="_blank">ДонНТУ</a>
+                <a href="#home">Наверх</a>
+                <a href="mailto:grigorievalvl@gmail.com">Контакты</a>
+            </div>
+            <p>&copy; 2025 Григорьев А.В., Бондаренко Е.С. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка для навигации
+        document.querySelectorAll('nav a, .footer-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                } else {
+                    window.location.href = this.href;
+                }
+            });
+        });
+        
+        // Добавление активного класса к текущему разделу в навигации
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id], .content-section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id') || section.querySelector('a[name]')?.getAttribute('name');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Анимация появления элементов при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Наблюдение за секциями
+        document.querySelectorAll('.content-section, .abstract').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
